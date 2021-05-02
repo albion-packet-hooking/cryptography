@@ -22,7 +22,9 @@ def _get_openssl_libraries(platform):
     # OpenSSL goes by a different library name on different operating systems.
     if platform == "win32" and compiler_type() == "msvc":
         return [
+            "libssl_static",
             "libssl",
+            "libcrypto_static",
             "libcrypto",
             "advapi32",
             "crypt32",
@@ -89,6 +91,7 @@ ffi = build_ffi_for_binding(
         "ct",
         "dh",
         "dsa",
+        "dtls",
         "ec",
         "ecdh",
         "ecdsa",
